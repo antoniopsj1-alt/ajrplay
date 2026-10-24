@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AJrPlay | Conteúdo Gratuito e Legal</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+:root{--azul-escuro:#0F172A;--azul-meio:#1E3A5F;--azul-claro:#3B82F6;--azul-suave:#60A5FA;--azul-muito-claro:#EFF6FF;--branco:#fff;--sombra:rgba(30,58,95,.15);color-scheme:dark}
+body{background:linear-gradient(135deg,var(--azul-escuro) 0%,var(--azul-meio) 100%);min-height:100vh;color:var(--branco)}
+[hidden]{display:none!important}
+header{padding:1.2rem 1rem;text-align:center;background:rgba(15,23,42,.85);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;box-shadow:0 2px 20px var(--sombra)}
+header h1{font-size:1.9rem;color:var(--azul-suave);letter-spacing:1px}
+header p{color:var(--azul-muito-claro);font-size:.92rem;margin:.3rem 0 .7rem}
+#q{width:min(520px,100%);padding:.7rem 1rem;border-radius:50px;border:1px solid rgba(96,165,250,.4);background:rgba(255,255,255,.08);color:#fff;font-size:1rem}
+#q::placeholder{color:#a9c3ea}
+button{font:inherit;color:inherit}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;padding:1.1rem 1rem .6rem}
+nav button{background:rgba(59,130,246,.2);border:1px solid rgba(96,165,250,.3);padding:.65rem 1.1rem;border-radius:50px;cursor:pointer;transition:all .3s;font-size:.9rem}
+nav button:hover,nav button.ativo{background:var(--azul-claro);border-color:var(--azul-claro);transform:translateY(-2px)}
+.tools{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;padding:.4rem 1rem 1rem}
+.tools button,.b{background:rgba(255,255,255,.08);border:1px solid rgba(96,165,250,.35);padding:.55rem 1rem;border-radius:10px;cursor:pointer;min-height:40px}
+.tools button:hover,.b:hover{border-color:var(--azul-suave)}
+.pri{background:var(--azul-claro)!important;border-color:var(--azul-claro)!important;font-weight:700}
+.dng{border-color:#f87171!important;color:#fecaca}
+:focus-visible{outline:2px solid #fde047;outline-offset:2px}
+main{max-width:1400px;margin:0 auto;padding:1rem}
+main h2{font-size:1.35rem;margin-bottom:1rem;color:var(--azul-suave)}
+.dica{background:rgba(59,130,246,.1);border-left:3px solid var(--azul-claro);padding:1rem;border-radius:8px;margin-bottom:1.5rem;font-size:.9rem;line-height:1.6}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1.1rem;margin-bottom:2rem}
+.botao-link{background:rgba(255,255,255,.05);border-radius:14px;overflow:hidden;border:1px solid rgba(96,165,250,.15);display:flex;flex-direction:column;transition:all .3s}
+.botao-link:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(59,130,246,.25);border-color:var(--azul-claro)}
+.go{color:inherit;text-decoration:none;flex:1;position:relative;display:block}
+.go img,.ph{width:100%;height:105px;object-fit:cover;display:grid;place-items:center;background:var(--azul-meio);font:700 1.9rem Georgia,serif;color:#fff}
+.pp{position:absolute;top:6px;left:6px;background:rgba(0,0,0,.65);padding:.1rem .5rem;border-radius:20px;font-size:.72rem}
+.conteudo{padding:.8rem;text-align:center}
+.nome{font-size:.95rem;font-weight:600}
+.desc{color:var(--azul-suave);font-size:.78rem;margin-top:.25rem;opacity:.9}
+.ac{display:flex;border-top:1px solid rgba(96,165,250,.15)}
+.ac button{flex:1;background:none;border:0;padding:.55rem 0;cursor:pointer;font-size:1rem;min-height:40px}
+.ac button:hover{background:rgba(59,130,246,.25)}
+.vazio{grid-column:1/-1;text-align:center;opacity:.85;padding:2rem 1rem;line-height:1.6}
+footer{text-align:center;padding:2rem 1rem;background:rgba(15,23,42,.7);margin-top:2rem;font-size:.85rem;color:var(--azul-suave)}
+footer strong{color:#fff}.aviso{font-size:.8rem;opacity:.75;margin-top:.5rem}
+dialog{background:#13233f;color:#fff;border:1px solid rgba(96,165,250,.4);border-radius:16px;padding:18px;width:min(640px,calc(100% - 24px));max-height:90vh;overflow:auto}
+dialog::backdrop{background:rgba(5,10,25,.75)}
+dialog h2{font-size:1.25rem;color:var(--azul-suave);margin-bottom:10px}
+.f{display:grid;gap:4px;margin-bottom:10px;font-size:.9rem;color:#b9cdee}
+.f input,.f select,.f textarea{background:rgba(255,255,255,.08);border:1px solid rgba(96,165,250,.35);border-radius:8px;padding:.55rem .7rem;color:#fff;font-size:1rem;min-height:40px;width:100%}
+.f select option{color:#000}
+.f textarea{min-height:150px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center}
+#prev{width:120px;height:75px;object-fit:cover;border-radius:8px;background:var(--azul-meio)}
+#plB{aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden}
+#plB iframe,#plB video{width:100%;height:100%;border:0;display:block}
+#plB audio{width:100%;margin-top:40px}
+details{border-top:1px solid rgba(96,165,250,.25);padding:8px 0}summary{cursor:pointer;font-weight:700;min-height:32px}
+dialog ol,dialog ul{padding-left:1.2em;color:#b9cdee;line-height:1.55}dialog li{margin:5px 0}dialog b{color:#fff}
+code{background:rgba(255,255,255,.1);padding:0 .35em;border-radius:5px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85em;word-break:break-all}
+#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#fff;color:#0F172A;padding:.6em 1em;border-radius:10px;font-weight:600;z-index:999;max-width:90vw}
+@media(max-width:480px){header h1{font-size:1.5rem}.grade{grid-template-columns:repeat(2,1fr);gap:.8rem}.go img,.ph{height:82px}nav button{padding:.55rem .85rem;font-size:.82rem}}
+</style>
+</head>
+<body>
+<header>
+ <h1>🌐 AJrPlay</h1>
+ <p>Seu guia para conteúdo gratuito e legal na internet</p>
+ <input id="q" type="search" placeholder="Buscar canal, filme, série, rádio…" aria-label="Buscar">
+</header>
+<nav id="nav" aria-label="Categorias"></nav>
+<div class="tools">
+ <button class="pri" id="bNew">+ Novo canal</button><button id="bImp">Importar links/lista</button><button id="bExp">Exportar backup</button><button id="bRes">Restaurar padrão</button><button id="bTut">Como usar</button>
+</div>
+<main>
+ <div class="dica">ℹ️ <strong>Como funciona:</strong> o AJrPlay é um diretório. Ao tocar num canal você vai para o site oficial, ou assiste aqui mesmo quando o link permite (YouTube, .m3u8, .mp4). Você pode cadastrar, editar, excluir canais e trocar as imagens. Não hospedamos conteúdo.</div>
+ <h2 id="tit"></h2>
+ <div class="grade" id="grade"></div>
+</main>
+<footer>
+ <p><strong>AJrPlay</strong> — Diretório de conteúdo gratuito e legal</p>
+ <p>© 2026 — <strong>Antônio Pereira de Souza Junior</strong></p>
+ <p class="aviso">Este é um diretório de links. Todo conteúdo pertence aos respectivos sites. Sempre consulte os termos de uso de cada plataforma.</p>
+</footer>
+
+<dialog id="pl"><h2 id="plT"></h2><div id="plB"></div><p id="plM" class="aviso"></p><div class="row"><a class="b" id="plO" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Abrir no site</a><button class="b pri" id="plC">Fechar</button></div></dialog>
+
+<dialog id="ed"><h2 id="edT">Novo canal</h2>
+ <label class="f">Nome<input id="eNome" maxlength="80" autocomplete="off"></label>
+ <label class="f">Categoria<select id="eCat"></select></label>
+ <label class="f">Link (https://…)<input id="eUrl" type="url" inputmode="url" placeholder="https://site-oficial.com/ao-vivo"></label>
+ <label class="f">Descrição (opcional)<input id="eDesc" maxlength="120"></label>
+ <div class="f">Imagem (opcional)
+  <input id="eImgU" type="url" placeholder="Link de uma imagem (https://…)">
+  <div class="row"><img id="prev" alt="Prévia" hidden><label class="b">Enviar do aparelho<input id="eImgF" type="file" accept="image/*" hidden></label><button class="b" id="eImgX" type="button">Remover imagem</button></div>
+ </div>
+ <label class="row"><input id="eFav" type="checkbox"> Favorito</label>
+ <div class="row"><button class="b pri" id="eSave">Salvar</button><button class="b" id="eCancel">Cancelar</button><button class="b dng" id="eDel" hidden>Excluir</button></div>
+</dialog>
+
+<dialog id="im"><h2>Importar canais</h2>
+ <p class="aviso" style="margin-bottom:8px">Cole links (um por linha), linhas <code>Nome | link | imagem</code>, uma lista M3U ou um backup .json exportado aqui.</p>
+ <label class="f">Categoria dos canais novos<select id="iCat"></select></label>
+ <label class="f"><textarea id="iTxt" spellcheck="false" placeholder="Rede Exemplo | https://exemplo.com.br/ao-vivo | https://exemplo.com/logo.png&#10;https://www.youtube.com/watch?v=XXXXXXXXXXX"></textarea></label>
+ <div class="row"><button class="b pri" id="iGo">Importar</button><label class="b">Abrir arquivo (.m3u, .json, .txt)<input id="iFile" type="file" accept=".m3u,.m3u8,.json,.txt,text/plain" hidden></label><button class="b" id="iX">Cancelar</button></div>
+</dialog>
+
+<dialog id="ag"><h2>Conteúdo +18</h2><p style="line-height:1.6">Esta área é só para maiores de 18 anos e começa vazia. Cadastre apenas links de sites legais que você tem direito de acessar.</p><div class="row"><button class="b pri" id="agY">Tenho 18 anos ou mais</button><button class="b" id="agN">Voltar</button></div></dialog>
+
+<dialog id="tut"><h2>Como usar o AJrPlay</h2>
+ <details open><summary>Como funciona</summary><ul>
+  <li>Escolha uma categoria, use a busca ou veja seus ⭐ Favoritos.</li>
+  <li>Tocar no canal abre o site oficial em outra aba. Canais com a etiqueta <b>▶</b> tocam aqui mesmo.</li>
+  <li>Cada cartão tem três botões: ⭐ favoritar, ✏️ editar e 🗑 excluir.</li>
+  <li>Tudo o que você cadastra fica salvo <b>neste navegador</b>. Use <b>Exportar backup</b> para guardar uma cópia.</li></ul></details>
+ <details open><summary>Instalar um novo canal com link</summary><ol>
+  <li>Toque em <b>+ Novo canal</b>.</li>
+  <li>Preencha o <b>nome</b>, escolha a <b>categoria</b> e cole o <b>link</b> do canal ou site.</li>
+  <li>Tipos de link que tocam dentro do app: vídeo ou transmissão do YouTube (<code>youtube.com/watch?v=…</code>, <code>youtube.com/live/…</code> ou <code>youtu.be/…</code>), lista de reprodução do YouTube, transmissão <code>.m3u8</code> e arquivos <code>.mp4</code>, <code>.mp3</code>, <code>.aac</code>.</li>
+  <li>Qualquer outro link (site de emissora, plataforma de streaming) abre no site oficial.</li>
+  <li>Salve. O canal aparece na categoria escolhida.</li></ol></details>
+ <details><summary>Imagem do canal</summary><ul>
+  <li>Cole o link de uma imagem, ou toque em <b>Enviar do aparelho</b> (ela é reduzida automaticamente).</li>
+  <li>Sem imagem, o app cria uma capa colorida com as iniciais. Se o link da imagem quebrar, acontece o mesmo.</li>
+  <li>Para trocar, edite o canal (✏️). Para tirar, use <b>Remover imagem</b>.</li></ul></details>
+ <details><summary>Cadastrar vários de uma vez</summary><ul>
+  <li>Toque em <b>Importar links/lista</b> e cole um link por linha, ou <code>Nome | link | imagem</code>.</li>
+  <li>Aceita lista <b>M3U</b> (nome e logo vêm da própria lista) e o backup .json exportado por este app.</li>
+  <li>Use apenas listas e canais que você tem direito de acessar.</li></ul></details>
+ <details><summary>Instalar o app no celular ou computador</summary><ol>
+  <li>Hospede <b>AJrPLAY.html</b> e <b>sw.js</b> na <b>mesma pasta</b> (por exemplo no GitHub Pages) ou abra pelo Live Server no PC.</li>
+  <li>No Chrome do celular, abra o endereço e toque em <b>Adicionar à tela inicial</b>.</li>
+  <li>Abra o endereço uma vez com internet. Depois disso o app abre mesmo sem internet, com a sua lista de canais. Para assistir, ainda precisa de internet, porque os canais são links para sites e transmissões.</li>
+  <li>Já usa um sw.js de outro app? Acrescente <code>./AJrPLAY.html</code> na lista APP_FILES dele.</li></ol></details>
+ <details><summary>Se um canal não abrir</summary><ul>
+  <li>Muitos sites bloqueiam exibição dentro de outros apps; use <b>Abrir no site</b>.</li>
+  <li>Links mudam com o tempo. Edite o canal e cole o endereço atual da página oficial.</li>
+  <li>Transmissões <code>.m3u8</code> podem ser bloqueadas pelo servidor de origem (CORS); nesse caso só funcionam no site oficial.</li></ul></details>
+ <details><summary>Área +18 e aviso legal</summary><ul>
+  <li>A aba +18 pede confirmação de maioridade e começa vazia; você cadastra seus próprios links legais. Ela não aparece na busca nem nos favoritos até ser liberada.</li>
+  <li>O AJrPlay só guarda links. Respeite os termos de cada plataforma e os direitos autorais.</li></ul></details>
+ <div class="row"><button class="b pri" id="tX">Entendi</button></div>
+</dialog>
+<div id="toast" role="status" hidden></div>
+<script>
+const $=s=>document.querySelector(s);
+const CATS=[['fav','⭐','Favoritos'],['filmes','🎬','Filmes'],['series','📺','Séries'],['aberta','📡','TV Aberta'],['fechada','🔒','TV Fechada'],['clipes','🎵','Videoclipes'],['radio','📻','Rádios'],['adulto','🔞','+18']];
+const CK=CATS.slice(1).map(c=>c[0]),CN=Object.fromEntries(CATS.map(c=>[c[0],c[1]+' '+c[2]]));
+const SEED=[["filmes","Vix","Filmes e séries grátis","https://vix.com/pt-br","https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=300&h=200&fit=crop"],["filmes","Pluto TV","Canais e filmes grátis","https://pluto.tv/br","https://images.unsplash.com/photo-1536440136628-21365fae35e2?w=300&h=200&fit=crop"],["filmes","YouTube Filmes","Canais oficiais gratuitos","https://www.youtube.com/@FilmesCompletos","https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=300&h=200&fit=crop"],["filmes","Globoplay","Conteúdo gratuito disponível","https://globoplay.globo.com/","https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=300&h=200&fit=crop"],["filmes","Prime Video","Alguns conteúdos grátis","https://www.primevideo.com/","https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=300&h=200&fit=crop"],["series","Vix","Séries completas grátis","https://vix.com/pt-br","https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300&h=200&fit=crop"],["series","Pluto TV","Canais de séries","https://pluto.tv/br","https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300&h=200&fit=crop"],["series","Globoplay","Novelas e séries da Globo","https://globoplay.globo.com/","https://images.unsplash.com/photo-1574375929345-d112ccf2d132?w=300&h=200&fit=crop"],["series","TV Brasil","Programas e séries públicas","https://www.youtube.com/@tvbrasil","https://images.unsplash.com/photo-1586899112099-552702895e16?w=300&h=200&fit=crop"],["aberta","TV Brasil","Canal público — ao vivo","https://www.tvbrasil.gov.br/ao-vivo/","https://images.unsplash.com/photo-1569619155970-3e4f040f7a5a?w=300&h=200&fit=crop"],["aberta","TV Cultura","Cultura e educação","https://tvcultura.com.br/ao-vivo","https://images.unsplash.com/photo-1559839543-014a96803338?w=300&h=200&fit=crop"],["aberta","Globo (sinal local)","Verifique disponibilidade","https://globoplay.globo.com/globotv/","https://images.unsplash.com/photo-1508921912184-335eeb376a39?w=300&h=200&fit=crop"],["aberta","Record TV","Ao vivo pelo site oficial","https://www.recordtv.com.br/ao-vivo","https://images.unsplash.com/photo-1508921912184-335eeb376a39?w=300&h=200&fit=crop"],["aberta","SBT","Ao vivo — site oficial","https://www.sbt.com.br/aovivo","https://images.unsplash.com/photo-1508921912184-335eeb376a39?w=300&h=200&fit=crop"],["aberta","Band","Jornalismo e esportes","https://www.band.uol.com.br/ao-vivo","https://images.unsplash.com/photo-1508921912184-335eeb376a39?w=300&h=200&fit=crop"],["clipes","YouTube Music","Videoclipes oficiais grátis","https://www.youtube.com/music","https://images.unsplash.com/photo-1470225620780-dba8ba36b74f?w=300&h=200&fit=crop"],["clipes","YouTube Pop","Clipes de sucesso","https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ","https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300&h=200&fit=crop"],["clipes","Vagalume","Letras e videoclipes","https://www.vagalume.com.br/","https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=300&h=200&fit=crop"],["clipes","Pluto TV — Música","Canais de clipes ao vivo","https://pluto.tv/br/live-tv/canais/musica","https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=200&fit=crop"],["radio","Rádio Brasil AM","Notícias e informação","https://radios.ebc.com.br/radio-brasil-am","https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=300&h=200&fit=crop"],["radio","Rádio Brasil FM","Música e cultura","https://radios.ebc.com.br/radio-brasil-fm","https://images.unsplash.com/photo-1598463770810-bde02435e7b2?w=300&h=200&fit=crop"],["radio","Rádio Globo","Esporte, notícias e música","https://www.radioglobo.com.br/","https://images.unsplash.com/photo-1579319863404-84b05d179cda?w=300&h=200&fit=crop"],["radio","Cultura FM","Música brasileira","https://www.culturafm.com.br/","https://images.unsplash.com/photo-1516147657372-285862e78b36?w=300&h=200&fit=crop"],["radio","Rádios.com.br","Milhares de rádios ao vivo","https://www.radios.com.br/","https://images.unsplash.com/photo-1504382090832-753a15f01b54?w=300&h=200&fit=crop"],["filmes","Filmes do YouTube","Filmes grátis com anúncios","https://www.youtube.com/movies"],["filmes","Plex","Filmes e séries grátis","https://watch.plex.tv/"],["filmes","Mercado Play","Filmes e séries grátis","https://www.mercadoplay.com.br/"],["filmes","Looke","Cinema nacional e clássicos","https://www.looke.com.br/"],["filmes","Belas Artes à La Carte","Cinema de arte","https://www.belasartesalacarte.com.br/"],["filmes","Internet Archive","Filmes de domínio público","https://archive.org/details/movies"],["filmes","Samsung TV Plus","Canais de filmes grátis","https://www.samsung.com/br/tvs/samsung-tv-plus/"],["series","Pluto TV Séries","Canais de séries 24h","https://pluto.tv/br/live-tv"],["series","Mercado Play Séries","Séries grátis","https://www.mercadoplay.com.br/"],["series","TV Brasil Play","Séries e documentários","https://tvbrasil.ebc.com.br/"],["series","Sesc TV","Documentários e séries","https://sesctv.org.br/"],["series","Plex Séries","Séries grátis com anúncios","https://watch.plex.tv/"],["aberta","RedeTV!","TV aberta nacional","https://www.redetv.uol.com.br/"],["aberta","Rede Vida","TV aberta católica","https://www.redevida.com.br/"],["aberta","TV Aparecida","TV aberta católica","https://tvaparecida.com.br/"],["aberta","TV Câmara","Sessões e debates","https://www.camara.leg.br/tv/"],["aberta","TV Senado","Sessões do Senado","https://www12.senado.leg.br/tv"],["aberta","TV Escola","Conteúdo educativo","https://tvescola.org.br/"],["aberta","Futura Play","Educação e cidadania","https://www.futuraplay.org/"],["aberta","CNN Brasil","Notícias ao vivo","https://www.cnnbrasil.com.br/ao-vivo/"],["aberta","Jovem Pan News","Notícias no YouTube","https://www.youtube.com/@JovemPanNews"],["aberta","BandNews TV","Notícias no YouTube","https://www.youtube.com/@BandNewsTV"],["aberta","TV Justiça","Judiciário no YouTube","https://www.youtube.com/@TVJustica"],["aberta","Canal Rural","Agronegócio","https://www.canalrural.com.br/"],["fechada","Globoplay","Plataforma da Globo","https://globoplay.globo.com/"],["fechada","Netflix","Assinatura","https://www.netflix.com/br/"],["fechada","Max","Assinatura (HBO)","https://www.max.com/br/"],["fechada","Disney+","Assinatura","https://www.disneyplus.com/pt-br"],["fechada","Paramount+","Assinatura","https://www.paramountplus.com/br/"],["fechada","Apple TV+","Assinatura","https://tv.apple.com/br"],["fechada","Telecine","Canais de filmes","https://www.telecineplay.com.br/"],["fechada","Canal Brasil","Cinema brasileiro","https://canalbrasil.globo.com/"],["fechada","Multishow","Canal Globo","https://multishow.globo.com/"],["fechada","GloboNews","Notícias 24h","https://globoplay.globo.com/globonews/"],["fechada","SporTV","Esportes","https://ge.globo.com/sportv/"],["fechada","ESPN Brasil","Esportes","https://www.espn.com.br/"],["fechada","Claro tv+","TV por assinatura","https://www.clarotvmais.com.br/"],["fechada","Sky","TV por assinatura","https://www.sky.com.br/"],["clipes","Vevo","Videoclipes oficiais","https://www.vevo.com/"],["radio","CBN","Notícias e análises","https://cbn.globoradio.globo.com/"],["radio","BandNews FM","Notícias 24h","https://bandnewsfm.band.uol.com.br/"]];
+const mk=(a,i)=>({id:'s'+i,cat:a[0],nome:a[1],desc:a[2],url:a[3],img:a[4]||'',fav:false});
+let L;try{L=JSON.parse(localStorage.getItem('ajrplay-v1'))}catch{}
+if(!Array.isArray(L))L=SEED.map(mk);
+let tab='filmes',un=false;try{un=sessionStorage.getItem('ajr18')=='1'}catch{}
+let tt;function toast(m){const e=$('#toast');e.textContent=m;e.hidden=false;clearTimeout(tt);tt=setTimeout(()=>e.hidden=true,3000)}
+const save=()=>{try{localStorage.setItem('ajrplay-v1',JSON.stringify(L));return true}catch{toast('Sem espaço para salvar. Use imagens menores ou apague canais.');return false}};
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const norm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const okUrl=u=>{try{return /^https?:$/.test(new URL(u).protocol)}catch{return false}};
+const okImg=u=>okUrl(u)||/^data:image\/(png|jpe?g|webp|gif);base64,/i.test(u||'');
+const host=u=>{try{return new URL(u).hostname.replace(/^www\./,'')}catch{return 'Canal'}};
+const vis=c=>c.cat!='adulto'||un;
+/* ---------- reprodução ---------- */
+const yt=id=>/^[\w-]{11}$/.test(id||'')?{t:'if',s:'https://www.youtube.com/embed/'+id+'?autoplay=1'}:null;
+function embedOf(u){let x;try{x=new URL(u)}catch{return null}const h=x.hostname.replace(/^www\./,''),p=x.pathname;
+ if(/\.m3u8(\?|$)/i.test(u))return{t:'hls',s:u};
+ if(/\.(mp3|aac|ogg|m4a)(\?|$)/i.test(u))return{t:'media',s:u,a:1};
+ if(/\.(mp4|webm|ogv)(\?|$)/i.test(u))return{t:'media',s:u};
+ if(h=='youtu.be')return yt(p.slice(1));
+ if(h.endsWith('youtube.com')){if(p=='/watch')return yt(x.searchParams.get('v'));const m=p.match(/^\/(embed|live|shorts)\/([\w-]{11})/);if(m)return yt(m[2]);
+  const l=x.searchParams.get('list');if(p=='/playlist'&&l)return{t:'if',s:'https://www.youtube.com/embed/videoseries?list='+encodeURIComponent(l)}}
+ return null}
+let hp;const hls=()=>hp||(hp=new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js';s.onload=ok;s.onerror=no;document.head.append(s)}));
+function play(c){const e=embedOf(c.url),b=$('#plB'),msg=()=>$('#plM').textContent='Não foi possível reproduzir aqui. Use “Abrir no site”.';
+ $('#plT').textContent=c.nome;$('#plO').href=c.url;$('#plM').textContent='';b.innerHTML='';
+ if(e.t=='if'){const f=document.createElement('iframe');f.src=e.s;f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';b.append(f)}
+ else{const v=document.createElement(e.a?'audio':'video');v.controls=true;v.autoplay=true;v.playsInline=true;b.append(v);v.onerror=msg;
+  if(e.t=='hls'&&!v.canPlayType('application/vnd.apple.mpegurl'))hls().then(()=>{if(!Hls.isSupported())throw 0;const h=new Hls();h.loadSource(e.s);h.attachMedia(v);h.on(Hls.Events.ERROR,(_,d)=>{if(d.fatal)msg()})}).catch(msg);else v.src=e.s}
+ $('#pl').showModal()}
+$('#plC').onclick=()=>$('#pl').close();$('#pl').onclose=()=>$('#plB').innerHTML='';
+/* ---------- tela ---------- */
+function ph(c){let h=0;for(const ch of c.nome)h=(h*31+ch.charCodeAt(0))%360;const i=c.nome.split(/\s+/).slice(0,2).map(w=>w[0]||'').join('').toUpperCase();return`<div class="ph" style="background:hsl(${h} 55% 32%)">${esc(i)}</div>`}
+function card(c){const e=embedOf(c.url);return`<div class="botao-link" data-id="${esc(c.id)}"><a class="go" href="${esc(c.url)}" target="_blank" rel="noopener noreferrer">${c.img?`<img src="${esc(c.img)}" alt="" loading="lazy" referrerpolicy="no-referrer">`:ph(c)}${e?'<span class="pp">▶ aqui</span>':''}<div class="conteudo"><div class="nome">${esc(c.nome)}</div><div class="desc">${esc(c.desc)}</div></div></a><div class="ac"><button data-a="fav" aria-label="Favoritar" title="Favoritar">${c.fav?'⭐':'☆'}</button><button data-a="ed" aria-label="Editar" title="Editar">✏️</button><button data-a="del" aria-label="Excluir" title="Excluir">🗑</button></div></div>`}
+function nav(){$('#nav').innerHTML=CATS.map(c=>`<button data-t="${c[0]}" class="${c[0]==tab?'ativo':''}">${c[1]} ${c[2]}</button>`).join('')}
+function render(){const q=norm($('#q').value.trim());let it=L.filter(vis),t;
+ if(q){it=it.filter(c=>norm(c.nome+' '+c.desc+' '+host(c.url)).includes(q));t='🔎 Resultados da busca'}
+ else if(tab=='fav'){it=it.filter(c=>c.fav);t=CN.fav}else{it=it.filter(c=>c.cat==tab);t=CN[tab]}
+ $('#tit').textContent=t+' ('+it.length+')';
+ $('#grade').innerHTML=it.map(card).join('')||`<p class="vazio">${tab=='fav'&&!q?'Nenhum favorito ainda. Toque em ☆ nos canais.':'Nada por aqui. Toque em “+ Novo canal” ou “Importar links/lista” para cadastrar.'}</p>`;nav()}
+$('#nav').onclick=e=>{const t=e.target.dataset.t;if(!t)return;if(t=='adulto'&&!un){$('#ag').showModal();return}tab=t;$('#q').value='';render();scrollTo({top:0,behavior:'smooth'})};
+$('#q').oninput=render;
+$('#agY').onclick=()=>{un=true;try{sessionStorage.setItem('ajr18','1')}catch{}$('#ag').close();tab='adulto';render()};$('#agN').onclick=()=>$('#ag').close();
+$('#grade').addEventListener('error',e=>{if(e.target.tagName=='IMG'){const c=L.find(x=>x.id==e.target.closest('[data-id]')?.dataset.id);if(c)e.target.outerHTML=ph(c)}},true);
+$('#grade').onclick=e=>{const r=e.target.closest('[data-id]');if(!r)return;const c=L.find(x=>x.id==r.dataset.id);if(!c)return;const a=e.target.closest('[data-a]')?.dataset.a;
+ if(a=='fav'){c.fav=!c.fav;save();render()}else if(a=='ed')edit(c);else if(a=='del'){if(confirm('Excluir "'+c.nome+'"?')){L=L.filter(x=>x!=c);save();render();toast('Canal excluído')}}
+ else if(e.target.closest('.go')&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&embedOf(c.url)){e.preventDefault();play(c)}};
+/* ---------- cadastro / edição ---------- */
+const opts=CK.map(k=>`<option value="${k}">${CN[k]}</option>`).join('');$('#eCat').innerHTML=$('#iCat').innerHTML=opts;
+let cur=null,img='';
+function showImg(){const p=$('#prev');p.hidden=!img;if(img)p.src=img;$('#eImgU').value=img.startsWith('data:')?'':img}
+function edit(c){cur=c||null;$('#edT').textContent=c?'Editar canal':'Novo canal';$('#eNome').value=c?.nome||'';$('#eCat').value=c?.cat||(CK.includes(tab)&&(tab!='adulto'||un)?tab:'filmes');$('#eUrl').value=c?.url||'';$('#eDesc').value=c?.desc||'';$('#eFav').checked=!!c?.fav;img=c?.img||'';showImg();$('#eDel').hidden=!c;$('#ed').showModal()}
+$('#bNew').onclick=()=>edit();$('#eCancel').onclick=()=>$('#ed').close();
+$('#eImgU').oninput=e=>{img=e.target.value.trim();$('#prev').hidden=!img;if(img)$('#prev').src=img};
+$('#eImgX').onclick=()=>{img='';showImg()};
+$('#eImgF').onchange=e=>{const f=e.target.files[0];e.target.value='';if(!f)return;const im=new Image,u=URL.createObjectURL(f);
+ im.onload=()=>{const W=320,H=200,cv=document.createElement('canvas');cv.width=W;cv.height=H;const x=cv.getContext('2d'),r=Math.max(W/im.width,H/im.height),w=im.width*r,h=im.height*r;x.drawImage(im,(W-w)/2,(H-h)/2,w,h);URL.revokeObjectURL(u);img=cv.toDataURL('image/jpeg',.82);showImg()};
+ im.onerror=()=>toast('Não consegui abrir essa imagem');im.src=u};
+$('#eSave').onclick=()=>{const nome=$('#eNome').value.trim(),url=$('#eUrl').value.trim();
+ if(!nome)return toast('Digite o nome do canal');if(!okUrl(url))return toast('Cole um link começando com https://');if(img&&!okImg(img))return toast('Link de imagem inválido');
+ const d={cat:$('#eCat').value,nome,url,desc:$('#eDesc').value.trim(),img,fav:$('#eFav').checked};
+ if(cur)Object.assign(cur,d);else L.push({id:'u'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),...d});
+ if(!save())return;$('#ed').close();if(d.cat!='adulto'||un)tab=d.cat;$('#q').value='';render();toast('Canal salvo')};
+$('#eDel').onclick=()=>{if(cur&&confirm('Excluir "'+cur.nome+'"?')){L=L.filter(x=>x!=cur);save();$('#ed').close();render();toast('Canal excluído')}};
+/* ---------- importar / exportar ---------- */
+function parseImport(txt,cat){const out=[];txt=txt.trim();
+ if(/^[\[{]/.test(txt)){try{let a=JSON.parse(txt);a=Array.isArray(a)?a:(a.canais||[]);a.forEach(c=>{if(c&&c.nome&&okUrl(c.url))out.push({cat:CK.includes(c.cat)?c.cat:cat,nome:String(c.nome).slice(0,80),desc:String(c.desc||'').slice(0,120),url:c.url,img:okImg(c.img)?c.img:'',fav:!!c.fav})})}catch{toast('JSON inválido')}return out}
+ let m=null;for(const raw of txt.split(/\r?\n/)){const l=raw.trim();if(!l)continue;
+  if(l.startsWith('#EXTINF')){m={nome:l.split(',').slice(1).join(',').trim(),img:(l.match(/tvg-logo="([^"]*)"/)||[])[1]||''};continue}
+  if(l[0]=='#')continue;let nome,url,im='';
+  if(m&&okUrl(l)){nome=m.nome;url=l;im=m.img;m=null}else if(l.includes('|'))[nome,url,im]=l.split('|').map(s=>s.trim());else if(okUrl(l)){url=l;nome=host(l)}else continue;
+  if(okUrl(url||''))out.push({cat,nome:(nome||host(url)).slice(0,80),desc:'',url,img:okImg(im||'')?im:'',fav:false})}
+ return out}
+$('#bImp').onclick=()=>$('#im').showModal();$('#iX').onclick=()=>$('#im').close();
+$('#iFile').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(f)$('#iTxt').value=await f.text()};
+$('#iGo').onclick=()=>{const cat=$('#iCat').value,novos=parseImport($('#iTxt').value,cat).filter(n=>!L.some(c=>c.url==n.url&&c.cat==n.cat));
+ if(!novos.length)return toast('Nenhum canal novo encontrado no texto');
+ novos.forEach(n=>L.push({id:'u'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),...n}));if(!save())return;
+ $('#im').close();$('#iTxt').value='';render();toast(novos.length+' canal(is) importado(s)')};
+$('#bExp').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({versao:1,canais:L},null,1)],{type:'application/json'}));a.download='ajrplay-canais.json';document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500)};
+$('#bRes').onclick=()=>{if(confirm('Voltar à lista padrão? Seus canais cadastrados e edições serão apagados (exporte um backup antes).')){L=SEED.map(mk);save();tab='filmes';render();toast('Lista padrão restaurada')}};
+$('#bTut').onclick=()=>$('#tut').showModal();$('#tX').onclick=()=>$('#tut').close();
+render();
+if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){navigator.serviceWorker.register('sw.js').then(()=>navigator.serviceWorker.ready).then(()=>{try{if(!sessionStorage.getItem('ajr-sw')){sessionStorage.setItem('ajr-sw','1');toast('Pronto: o app abre sem internet')}}catch{}}).catch(()=>{})}
+</script>
+</body>
+</html>
